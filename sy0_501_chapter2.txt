@@ -62,6 +62,26 @@ Shibboleth - open-source federated identity solution that includes Open SAML lib
 OAuth and OpenID Connect - streamlines authentication for many websites
 
 
+Managing Accounts:
+
+Principle of Least Privilege - technical control using access controls...grant individuals only the rights needed to perform their job function
+Users should not share accounts...ensure guest account is disabled
+Most administrators should have two accounts...general user account for everyday activities...admin account for making changes
+Accound disablement policy ensures inactive accounts are disabled
+Time restrictions - prevent logons or accessing network resources during specific hours
+Location-based restrictions - prevent logons from certain locations
+Accounst should recertify to verify still required
+Credential Management Systems - store and simplify use of credentials for users (LastPass)
+
+
+Comparing Access Models:
+
+Role-based Access Control (RBAC) - grants access by placing users in roles based on job duties, functions or tasks...use matrix matching job titles with required priviliges 
+Group-based Priviliges - similar to RBAC...creates groups...adds users to groups...then assign permissions to groups
+Rule-based Access Control (RBAC) - uses approved rules  such as ACLs
+Discretionary Access Model (DAC) - every object is an owner...NTFS uses this model...susceptible to Trojan horses
+Mandatory Access Control (MAC) - uses security or sensitive lables to idnetify objects and subjects...restricted based on need to know
+Attribute-based Access Control (ABAC) - evaluates attributes and grants access based on the value of attributes...SDNs
 
 
 
