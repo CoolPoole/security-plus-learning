@@ -1,0 +1,201 @@
+Chapter 1:  Mastering Security Basics
+
+Terms:
+
+Use case - a goal of an organization wants to achieve
+Confidentiality - prevents unauthorized disclosure of data
+Encryption - scrambles data to make it unreadable by unauthorized personnel
+Identification - users claim via unique username
+Authentication - users prove identify with authentication such as password
+Authorization - can grant or restrict access to resources using an authorization method, such as permissions
+Steganography - practice of hiding data within data
+Obfuscation - method to make something unclear or difficult to understand
+Integrity - provides assurances that data has not changed
+Hashing - technique used to enforce integrity
+Hash - a number created by executing a hashing algorithm against data such as file or message
+Digital Signature - digital version of what a handwritten signature is on a document
+Non-repudation - unable to deny something has been done
+Availability - indicates that data and services are available when needed
+Redundancy - adds duplication to provide fault tolerance
+Fault Tolerance - no single point of failure
+Risk - possibility or likelihood of a threat exploiting a vulnerability resulting in a loss
+Threat - any circumstance or event that has the potential to compromise confidentialiy, integrity, or availability
+Vulnerability - weakness
+Security Incident - advese event or series of events that can negatively affect confidentialiy, integrity, or availability of organizatio's IT systems and data
+Risk Mitigation - reduces chance threat will exploit a vulnerability
+Technical Controls - use technology to reduce vulnerabilities
+Administrative Controls - use methods mandated by organizational policies or other guidelines
+Physical Controls - any controls you can physically touch
+NIST - National Institute of Standards and Technology
+ITL - Information Technology Laboratory (publishes SPs or Special Publications)
+Preventive Controls - prevent security incidents
+Detective Controls - detect when vulnerabilities have been exploited, resulting in a security incident
+Corrective Controls - attempt to reverse the impact of an incident or problem after it has occured
+Deterrent Controls - attempt to discourage a threat
+Compensating Controls - alternative controls used instead of a primary control
+Vituralization - allows you to host one or more virtual systems on a single physical machine
+
+``
+
+Notes:
+
+Components of a Use Case:
+Actors - individual(s) involved
+Preconditions - must occur before the process can start
+Trigger - starts the use case
+Post Condition - occurs after the actor triggers the process
+Normal flow - list of steps in a specific order
+Alternate flow - occurs when actions are not the same order as normal flow
+
+Access Controls:
+Identification
+Authentication
+Authorization
+
+MAC:
+Media Access Control - physical addresses of NICs
+Mandatory Access Control - access control model
+Message Authentication Code - provides integrity similar to how hash is used 
+
+Hashing:
+You know data has changed if the hash is different than original hash
+Doesn't tell you who modified the data but only that data has changed
+Types of algorithms are MD5, SHA, and HMAC
+
+Key Concepts related to Integrity:
+Integrity provides assurances that data has not been modified, tampered with, or corrupted
+Hashing verifies integrity
+
+Fault Tolerant and Redundancy Techniques:
+Disk Redundancy - RAID
+Server Redundancy - failover clusters
+Load Balancing - F5, Netscaler
+Site Redundancies - hot/cold/warm sites
+Backups
+Alternate Power - UPS, generators
+Cooling Systems - heating, ventilation, HVAC systems
+
+Using encryption can increase the size of the file as well as use more memory and CPU resources to decrypt and re-encypt
+
+Threats can come from inside organization (disgruntled employee) or outside organization (malicious actor)
+Threats can be natural (hurricane), manmade (malware)
+Threats can be intentional(attacker) or accidental (employee mistake)
+
+You can reduce risk by implementing controls 
+
+Control Types:
+Technical (how implemented) - use technology
+Administrative (how implemented) - use administrative or management methods
+Physical (how implemented) - controls that you can physically touch
+Preventive (goals of security control) - attempt to prevent an incident from occurring
+Detective (goals of security control) - detect incidents after they have occured
+Corrective (goals of security controls) - reverse the impact of an incident
+Deterrent (goals of security controls) - discourage individuals from causing an incident
+Compensating (goals of security controls) - alternate controls used when primary control is not feasible
+
+Technical Controls:
+Encryption
+Antivirus Software
+IDS/IPS
+Firewalls
+Least Privilege
+
+Administrative Controls:
+Risk Assessments
+Vulnerability Assessments
+Penetration Tests
+Awareness and Training
+Configuration and Change Management
+Contigency Planning
+Media Protection
+Physical and Environmental Protection 
+
+Control Goals:
+Preventive Controls - hardening, security training, security guards, change management, account disablement policy
+Detective Controls - log monitoring, trend analysis, security audit, video surveillance, motion detection
+Corrective Controls - IPS, backups and system recovery
+Deterrent Controls - cable locks, hardware locks
+Compensating Controls - using one-time password instead of a smart card due to new employee ramp up 
+
+Virtualization:
+Hypervisor - creates, runs, manages VMs on single host (Virtualbox, Hyper-V, VMware)
+Host - phsyical system hosting VMs (ESXi)
+Guest - OS running on host system (guests and guest machines)
+Host elasticity and scalability
+
+Type I Hypervisor - ESXi...can run on bare metal
+Type II Hypervisor - software within an OS like Hyper-V running on Windows Server OS 
+App Cell or Containers - shares a kernal OS and all cells/containers must run the same OS 
+
+Snapshots - copy of VM at a moment in time
+
+VDI - Virtual Desktop Infrastructure
+VDE - Virtual Desktop Environment
+Non-Persistent - VM returns to the base configuration once user is done with it
+VM Escape - allows attacker to attack host system from within VM
+VM Sprawl - no properly managing VMs and they become unruly 
+
+VMs are just files so they can be copied and moved should an employee become disgruntled and they include all the data 
+
+Various Tools to Use:
+ping - checks network connectivity, tests NIC, resolve hostnames, security posture
+	ping <ip address>  Windows: use ping <ip address> -t (continuous) Linux: ping -c 4 <ip address> (4 packets sent)
+ipconfig - windows
+	ipconfig /all - all the info
+	ipconfig /displaydns - show the DNS cache
+	ipconfig /flushdns - flush DNS cache
+ifconfig - linux (depreciated)
+	ifconfig eth0 - show configuration of first ethernet interface
+	ifconfig eth0 promisc - allows the first NIC to process all traffic that is sent to the device
+	ifconfig eth0 allmulti - enables multicast mode on first ethernet interface 
+ip - linux...recommeded since ifconfig is deprecated
+	ip link show - show the interfaces and details
+	ip link set eth0 up - enables a network interface 
+	ip -s link - statistics on netowrk interface
+netstat - allows you to view statistics for TCP/IP protocols on a system
+	netstat -a - displays all TCP and UDP ports that a system is listening on
+	netstat -r - displays routing table
+	netstat -s - displays stats of packets sent or received for specific protocols
+	netstat -n - diplays addresses and port numbers in numerical order 
+	netstat -p <protocol> - show stats on specific protocol 
+
+	ESTABLISHED - normal state...connection
+	LISTEN - waiting for a connection
+	CLOSE_WAIT - waiting for connection termination
+	TIME_WAIT - waiting on remote connection to indicate they received the ACK packet 
+	SYN_SENT - sent SYN packet and waiting on SYN-ACK
+	SYN_RECEIVED - waiting on ACK packet
+tracert - windows...shows router hops
+traceroute - linux...shows router hops
+arp - maps IP address (Layer 3) to MAC addresses (Layer 2)...show arp cache 
+
+
+Remember This:
+
+Confidentiality ensures that data is only viewable by authorized users
+Best way to protect confidentialiy of data is via encryption
+Access controls help ensure confidentialty by restricting access
+Steganography helps provide confidentialiy by hiding data such as hiding text files in images
+
+Integrity verifies the data has not changed
+Loss of integrity can occur via unauthorized or unintended changes (db update)
+Hashing algorithms calculate hashes to verify integrity
+Comparing hashes, you can verify integrity has been maintained
+
+Digital Signatures verify integrity of emails and files
+Digital Signatures also provide authentication and non-repudiation
+Digital Signatures require use of certificates and Public Key Infrastructure (PKI)
+Cerficates include keys for encryption
+PKI provides way to create, manage, and distribute certificates
+
+Risk is the likelihood that a threat will exploit a vulnerability
+Risk Mitigation reduces the changes that a threat will exploit a vulnerability, or reduces impact of the risk by implementing security controls
+
+Most security controls can be classified as technical, administrative, or physical
+
+Preventive controls attempt to prevent security incidents
+Hardening systems increase basic configuration to prevent incidents
+Security Guards prevent unauthorized personnel from entering a secure area
+Change Management processes help prevent outages from configuration changes
+Account disablement policy ensures that accounts are disabled when a user leaves the organization
+Detective Controls detect when vulnerabilities have been exploited

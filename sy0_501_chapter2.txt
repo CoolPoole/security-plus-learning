@@ -1,0 +1,68 @@
+Chapter 2: Understanding Identity and Access Management
+
+Exploring Authentication Concepts:
+
+Authentication - allows entitites to prove their identities through the use of credentials known to other identities
+Identification - user claims or professes identity such as with a username, email address, PIV card, or biometrics
+Authentication occurs when entity provides proof of an identify such as username or password
+	Second Identity - authenticator and verifies the authentication
+Authorization - provides access to resources based on proven identity
+Accounting methods track user activity and record the activity in logs
+
+Five Factors of Authentication:
+	something you know - username/password
+	something you have - smart card, CAC, PIV, or token
+	something you are - biometrics such as fingerprints or retina scans
+	somewhere you are - geolocation, computer name, or MAC address
+	something you do - gestures on touch screen
+	
+Password or PIN is least secure form of authentication (something you know)
+Passwords should be strong and changed often...complex passwords include multiple character types (number, lowercase, special character, uppercase) and at least 14 characters long
+
+Administrators should verify user identity before resetting password...when resetting manually, should configure password as temporary and force new password upon next successful login
+Password policies require users to create complex passwords
+Password length is the minimum number of characters in password
+Password complexity ensures passwords are complex and include 3 of the 4 character types (uppercase, lowercase, number, special character)
+Password history prevents users from using previous passwords
+Minimum password age - used to prevent users from changing password repeatedly to use the original password
+Maximum password age or expiration forces users to change password periodically...when admin resets password, password should expire on first use
+Password policies should apply to entity using password...includes user accounts and service accounts
+Account lockout policies - lock account after too many bad password attempts
+
+Smart Cards - credit card sized cards that include embedded certificates use for authentication...require PKI to issue certificates
+Commmon Access Cards (CAC) and Personal Identity Verification (PVI) cards can be used as photo IDs and as smart cards (identification and authentication)
+Tokens (Key Fobs) dispaly numbers in LCD...provide rolling one-time passwords and synchronized with a server...USB tokens include embedded chip and USB connection...called hardware tokens
+HOTP and TOTP - open-sourced standards for one-time-use passwords
+	HOTP creates one-time-use password that does not expire (HMAC-based...Hash-based Message Authentication)
+	TOTP creates one-time-use password that expires every 30 seconds (Time-based)
+Biometrics - most difficult to falsify...physical methods include voice and facial recognition, fingerprints, retina scans, iris scans, and palm scans...can be used for identification
+
+False-Acceptance Rate (FAR)...aka false match rate...identifies percentage of times false acceptance occurs
+False-Rejection Rate (FRR)...aka false nonmatch rate...identifies percentage of times false rejections occurs
+Crossover Error Rate (CER)...indicates quality of biometric systems...lower the better
+
+Single-factor authentication - password or PIN
+Dual-factor authentication (2-factor) - uses two factors such as password and token
+Multi-factor authentication - uses two or more factors...stronger than single factor obviously
+Authentication methods using two or more methods in same factor still considered single-factor authentication (ex. password and PIN)
+
+
+
+Comparing Authentication Services:
+
+Kerberos - network authentication protocol using tickets (TGT) issued by KDC or TGT server
+	Ticket Granting Ticket (TGT) expires, user might not be able to access resources
+	AD and Unix realms use Kerberos for authentication
+LDAP uses special formats and methods to query directories...single point of management for objects (i.e. users and computers)
+LDAPS encrypts transmissions with TLS or SSL
+Single Sign-on (SSO) allows users to authenticate with a single user account and access multiple resources on a network without authenticating again
+SAML - XML based standard to exchange authentication and authorization information between parties (IDP and SDP)...used with web-based applications
+Federated Identity - links users credentials from different networks or OSs but federation treats as one identity
+Shibboleth - open-source federated identity solution that includes Open SAML libraries
+OAuth and OpenID Connect - streamlines authentication for many websites
+
+
+
+
+
+
